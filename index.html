@@ -44,7 +44,7 @@
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      transition: box-shadow 0.3s;
+      transition: box-shadow 0.3;
     }
 
     nav.scrolled { box-shadow: 0 2px 20px rgba(108,92,231,0.08); }
@@ -73,7 +73,7 @@
       color: var(--text-muted);
       padding: 4px 0;
       position: relative;
-      transition: color 0.2s;
+      transition: color 0.2;
     }
     .nav-links a::after {
       content: '';
@@ -82,7 +82,7 @@
       width: 0; height: 2px;
       background: var(--accent);
       border-radius: 2px;
-      transition: width 0.25s;
+      transition: width 0.25;
     }
     .nav-links a:hover, .nav-links a.active {
       color: var(--accent);
@@ -148,7 +148,7 @@
       width: 6px; height: 6px;
       background: var(--accent-light);
       border-radius: 50%;
-      animation: pulse 2s infinite;
+      animation: pulse 2 infinite;
     }
 
     @keyframes pulse {
@@ -193,7 +193,7 @@
       cursor: pointer;
       text-decoration: none;
       display: inline-flex; align-items: center; gap: 8px;
-      transition: background 0.2s, transform 0.15s;
+      transition: background 0.2, transform 0.15;
     }
     .btn-primary:hover { background: #5a4bd1; transform: translateY(-1px); }
 
@@ -207,7 +207,7 @@
       cursor: pointer;
       text-decoration: none;
       display: inline-flex; align-items: center; gap: 8px;
-      transition: border-color 0.2s, color 0.2s;
+      transition: border-color 0.2, color 0.2;
     }
     .btn-ghost:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
 
@@ -823,28 +823,29 @@
           <div class="contact-item-icon">📧</div>
           <div class="contact-item-text">
             <div class="label">邮箱</div>
-            <div class="value">hello@lingjing.studio</div>
+            <div class="value">1506796440@qq.com</div>
           </div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📱</div>
           <div class="contact-item-text">
-            <div class="label">电话</div>
-            <div class="value">400-000-0000</div>
+            <div class="label">QQ</div>
+            <div class="value">1506796440</div>
+            <div class="value">1186091795</div>
           </div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📍</div>
           <div class="contact-item-text">
             <div class="label">地址</div>
-            <div class="value">中国 · 北京</div>
+            <div class="value">中国 · 成都</div>
           </div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">⏰</div>
           <div class="contact-item-text">
             <div class="label">工作时间</div>
-            <div class="value">周一至周五 09:00 – 18:00</div>
+            <div class="value">周一至周五 10:00 – 22:00</div>
           </div>
         </div>
       </div>
@@ -909,7 +910,7 @@
 <script>
   // Page switching
   function showPage(name, clickedEl) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.section').forEach( => .classList.remove('active'));
     document.getElementById('page-' + name).classList.add('active');
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
     if (clickedEl) clickedEl.classList.add('active');
