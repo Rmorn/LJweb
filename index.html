@@ -44,7 +44,7 @@
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      transition: box-shadow 0.3;
+      transition: box-shadow 0.3s;
     }
 
     nav.scrolled { box-shadow: 0 2px 20px rgba(108,92,231,0.08); }
@@ -73,7 +73,7 @@
       color: var(--text-muted);
       padding: 4px 0;
       position: relative;
-      transition: color 0.2;
+      transition: color 0.2s;
     }
     .nav-links a::after {
       content: '';
@@ -82,7 +82,7 @@
       width: 0; height: 2px;
       background: var(--accent);
       border-radius: 2px;
-      transition: width 0.25;
+      transition: width 0.25s;
     }
     .nav-links a:hover, .nav-links a.active {
       color: var(--accent);
@@ -148,7 +148,7 @@
       width: 6px; height: 6px;
       background: var(--accent-light);
       border-radius: 50%;
-      animation: pulse 2 infinite;
+      animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
@@ -193,7 +193,7 @@
       cursor: pointer;
       text-decoration: none;
       display: inline-flex; align-items: center; gap: 8px;
-      transition: background 0.2, transform 0.15;
+      transition: background 0.2s, transform 0.15s;
     }
     .btn-primary:hover { background: #5a4bd1; transform: translateY(-1px); }
 
@@ -207,7 +207,7 @@
       cursor: pointer;
       text-decoration: none;
       display: inline-flex; align-items: center; gap: 8px;
-      transition: border-color 0.2, color 0.2;
+      transition: border-color 0.2s, color 0.2s;
     }
     .btn-ghost:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
 
@@ -856,20 +856,20 @@
           <div class="form-row">
             <div class="form-group">
               <label>您的姓名</label>
-              <input type="text" placeholder="请输入姓名">
+              <input type="text" placeholder="请输入姓名" id="name">
             </div>
             <div class="form-group">
               <label>联系电话</label>
-              <input type="tel" placeholder="请输入手机号">
+              <input type="tel" placeholder="请输入手机号" id="phone">
             </div>
           </div>
           <div class="form-group">
             <label>邮箱地址</label>
-            <input type="email" placeholder="example@email.com">
+            <input type="email" placeholder="example@email.com" id="email">
           </div>
           <div class="form-group">
             <label>意向业务</label>
-            <select>
+            <select id="service">
               <option value="">请选择</option>
               <option>游戏开发</option>
               <option>UI 设计</option>
@@ -879,7 +879,7 @@
           </div>
           <div class="form-group">
             <label>项目描述</label>
-            <textarea placeholder="请简要描述您的项目需求或问题…"></textarea>
+            <textarea placeholder="请简要描述您的项目需求或问题…" id="message"></textarea>
           </div>
           <button class="form-submit" onclick="submitForm()">
             发送消息
@@ -943,10 +943,24 @@
   }
   initFadeIn();
 
-  // Form submit
+  // Form submit - 跳转到邮件
   function submitForm() {
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
+    const name = document.getElementById('name').value || '未填写';
+    const phone = document.getElementById('phone').value || '未填写';
+    const email = document.getElementById('email').value || '未填写';
+    const service = document.getElementById('service').value || '未选择';
+    const message = document.getElementById('message').value || '未填写';
+
+    const subject = encodeURIComponent('【灵境】新的咨询 - ' + service);
+    const body = encodeURIComponent(
+      '姓名: ' + name + '\n' +
+      '电话: ' + phone + '\n' +
+      '邮箱: ' + email + '\n' +
+      '意向业务: ' + service + '\n\n' +
+      '项目描述:\n' + message
+    );
+
+    window.location.href = 'mailto:1506796440@qq.com?subject=' + subject + '&body=' + body;
   }
 </script>
 </body>
